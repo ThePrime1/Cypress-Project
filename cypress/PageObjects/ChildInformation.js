@@ -7,12 +7,15 @@ export default class ChildInformation {
     genderElement = "select[name='child_gender']";
     religionElement = "select[name='child_religion']";
     birthdayEement = "input[placeholder='Select Date']";
-    birthPlaceElement = "div[class='block col-span-12 sm:col-span-12 relative grid_col_block'] input[type='text']";
+    birthPlaceElement = "div[class='block col-span-12 sm:col-span-12 relative grid_col_block'] div[class='text_input_block'] input[type='text']";
     date = "div[aria-label='Calendar wrapper'] div:nth-child(1) div:nth-child(3) div:nth-child(1)";
     dateSelect = ".dp__action_button.dp__action_select";
     regionElement = "div[class='region_dropdown col-span-2'] select[name='child_geo']";
     province = "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(10) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > select:nth-child(1)";
-    cityElement = "div[class='municipality_dropdown col-span-2'] select[name='child_geo']";
+
+    cityElement = "#headlessui-combobox-input-5";
+
+
     barangayElement = "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(10) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > select:nth-child(1)";
     typeOfBirthEle = "select[name='child_type_of_birth']";
     birthOrderEle = "select[name='birth_order']";
@@ -54,12 +57,14 @@ export default class ChildInformation {
         cy.get(this.province).select("Lanao Del Sur");
     }
 
-    setCity() {
-        cy.get(this.cityElement).select("Butig");
+    setCity(city) {
+        cy.get("#headlessui-combobox-input-5").type(city);
+        cy.wait(5000);
+        cy.get("#headlessui-combobox-option-9 > .block").contains("Calanogas").click();
     }
 
     setBarangay() {
-        cy.get(this.barangayElement).select("Butig Proper");
+        cy.get("div:nth-child(4) div:nth-child(2) select:nth-child(1)").select("Bubonga Ranao");
     }
 
     setTypeOfBirth() {

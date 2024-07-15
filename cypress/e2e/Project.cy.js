@@ -1,10 +1,11 @@
 import ChildInformation from "../PageObjects/ChildInformation";
 import Login from "../PageObjects/Login";
 import UploadAttachment from "../PageObjects/UploadAttachment";
+import MotherInformation from "../PageObjects/MotherInformation";
 
 describe("Service Automation with POM Pattern", () => {
     it("Certificate of Live Birth Service Automation", () => {
-        cy.visit("Confidential");
+        cy.visit("https://citizen-dev.ph.orangebd.com");
 
         cy.get('#headlessui-disclosure-button-1').click();
 
@@ -14,8 +15,8 @@ describe("Service Automation with POM Pattern", () => {
 
         let login = new Login();
 
-        login.setUsername("Confidential");
-        login.setPassword("Confidential");
+        login.setUsername("01907371151");
+        login.setPassword("pH12345678");
         login.clickSigninButton();
         login.verifySignin();
 
@@ -39,14 +40,31 @@ describe("Service Automation with POM Pattern", () => {
         ci.setGender();
         ci.setReligion();
         ci.setBirthday();
-        ci.setPlaceofBirth("Dhaka");
+        ci.setPlaceofBirth("Philipines");
         ci.setRegion();
         ci.setProvince();
-        ci.setCity();
+        ci.setCity("Cal");
         ci.setBarangay();
         ci.setTypeOfBirth();
         ci.setBirthOrder();
         ci.setWeight("2500");
         ci.submitInformation();
+
+        let mi = new MotherInformation();
+
+        mi.setFirstName("Sara");
+        mi.setLastName("Hitler");
+        mi.setEthnicity("Asian");
+        mi.setReligion();
+        mi.setTotalNumberOfChildrenBornAlive();
+        mi.setNumberOfChildrenStillLivingIncludingThisBirth();
+        mi.setNumberOfChildrenBornAliveButAreNowDead();
+        mi.setOccupationEle("House Wife");
+        mi.setAge("30");
+        mi.setHouse("12 street battu");
+        mi.setProvince();
+        mi.setMotherCity("Bu");
+        mi.setMotherBarangay();
+        mi.submit();
     })
 })
